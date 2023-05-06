@@ -147,7 +147,7 @@
             userListDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             userListDGV.Size = new Size(424, 286);
             userListDGV.TabIndex = 9;
-            userListDGV.CellContentClick += userListDGV_CellContentClick;
+            userListDGV.MouseDoubleClick += userListDGV_MouseDoubleClick;
             // 
             // username
             // 

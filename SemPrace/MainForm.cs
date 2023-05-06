@@ -35,5 +35,12 @@ namespace SemPrace
             logIn.Show();
             this.Hide();
         }
+
+        private void customersLogo_Click(object sender, EventArgs e)
+        {
+            CustomersForm manageCustomers = new CustomersForm();
+            manageCustomers.MdiParent = this.MdiParent;
+            manageCustomers.Show();
+        }
     }
 }

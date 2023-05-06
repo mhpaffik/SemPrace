@@ -93,6 +93,7 @@
             customersLogo.SizeMode = PictureBoxSizeMode.StretchImage;
             customersLogo.TabIndex = 3;
             customersLogo.TabStop = false;
+            customersLogo.Click += customersLogo_Click;
             // 
             // label2
             // 

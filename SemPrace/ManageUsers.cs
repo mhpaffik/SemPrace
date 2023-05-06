@@ -13,9 +13,6 @@ namespace SemPrace
 {
     public partial class ManageUsers : Form
     {
-        string path = "data_tb.db";
-        string cs = @"URI=file:" + Application.StartupPath + "\\data_tb.db";
-
         SQLiteConnection con;
         SQLiteCommand cmd;
         SQLiteDataReader dr;
@@ -26,7 +23,7 @@ namespace SemPrace
 
         private void dataShow()
         {
-            con = new SQLiteConnection(cs);
+            con = new SQLiteConnection(SqLiteLibrary.cs);
             con.Open();
 
             string stm = "SELECT * FROM users";
@@ -39,26 +36,11 @@ namespace SemPrace
             }
         }
 
-        private void createDB()
-        {
-            if (!System.IO.File.Exists(path))
-            {
-                SQLiteConnection.CreateFile(path);
-                using (var sqlite = new SQLiteConnection(@"Data Source=" + path))
-                {
-                    sqlite.Open();
-                    string sql = "create table users (username varchar(20), password varchar(20), email varchar(20))";
-                    SQLiteCommand command = new SQLiteCommand(sql, sqlite);
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
-
         private void btnInsert_Click(object sender, EventArgs e)
         {
             if (checkTB())
             {
-                con = new SQLiteConnection(cs);
+                con = new SQLiteConnection(SqLiteLibrary.cs);
                 con.Open();
                 cmd = new SQLiteCommand(con);
                 try
@@ -95,7 +77,7 @@ namespace SemPrace
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            con = new SQLiteConnection(cs);
+            con = new SQLiteConnection(SqLiteLibrary.cs);
             con.Open();
             cmd = new SQLiteCommand(con);
             try
@@ -117,7 +99,7 @@ namespace SemPrace
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            con = new SQLiteConnection(cs);
+            con = new SQLiteConnection(SqLiteLibrary.cs);
             con.Open();
             cmd = new SQLiteCommand(con);
             try
@@ -135,20 +117,10 @@ namespace SemPrace
             }
         }
 
-        private void userListDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (userListDGV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
-            {
-                userListDGV.CurrentRow.Selected = true;
-                userNameTB.Text = userListDGV.Rows[e.RowIndex].Cells["Username"].FormattedValue.ToString();
-                passwordTB.Text = userListDGV.Rows[e.RowIndex].Cells["Password"].FormattedValue.ToString();
-                emailTB.Text = userListDGV.Rows[e.RowIndex].Cells["Email"].FormattedValue.ToString();
-            }
-        }
-
         private void ManageUsers_Load(object sender, EventArgs e)
         {
-            createDB();
+            SqLiteLibrary.createDB();
+            SqLiteLibrary.createTable("create table if not exists users (username varchar(20), password varchar(20), email varchar(20))");
             dataShow();
         }
 
@@ -163,6 +135,23 @@ namespace SemPrace
         {
             bool a = userNameTB.Text.Length != 0 && passwordTB.Text.Length != 0 && emailTB.Text.Length != 0 ? true : false;
             return a;
+        }
+
+        private void userListDGV_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (userListDGV.SelectedRows.Count > 0)
+                {
+                    userNameTB.Text = userListDGV.SelectedRows[0].Cells[0].Value.ToString();
+                    passwordTB.Text = userListDGV.SelectedRows[0].Cells[1].Value.ToString();
+                    emailTB.Text = userListDGV.SelectedRows[0].Cells[2].Value.ToString();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }
