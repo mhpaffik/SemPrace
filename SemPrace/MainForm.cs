@@ -42,5 +42,19 @@ namespace SemPrace
             manageCustomers.MdiParent = this.MdiParent;
             manageCustomers.Show();
         }
+
+        private void productsLogo_Click(object sender, EventArgs e)
+        {
+            ManageProducts manageProducts = new ManageProducts();
+            manageProducts.MdiParent = this.MdiParent;
+            manageProducts.Show();
+        }
+
+        private void categoriesLogo_Click(object sender, EventArgs e)
+        {
+            ManageCategories manageCategories = new ManageCategories();
+            manageCategories.MdiParent = this.MdiParent;
+            manageCategories.Show();
+        }
     }
 }

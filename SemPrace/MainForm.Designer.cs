@@ -72,6 +72,7 @@
             productsLogo.SizeMode = PictureBoxSizeMode.StretchImage;
             productsLogo.TabIndex = 1;
             productsLogo.TabStop = false;
+            productsLogo.Click += productsLogo_Click;
             // 
             // label1
             // 
@@ -136,6 +137,7 @@
             categoriesLogo.SizeMode = PictureBoxSizeMode.StretchImage;
             categoriesLogo.TabIndex = 7;
             categoriesLogo.TabStop = false;
+            categoriesLogo.Click += categoriesLogo_Click;
             // 
             // label4
             // 
