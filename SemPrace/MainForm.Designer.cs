@@ -116,6 +116,7 @@
             ordersLogo.SizeMode = PictureBoxSizeMode.StretchImage;
             ordersLogo.TabIndex = 5;
             ordersLogo.TabStop = false;
+            ordersLogo.Click += ordersLogo_Click;
             // 
             // label3
             // 

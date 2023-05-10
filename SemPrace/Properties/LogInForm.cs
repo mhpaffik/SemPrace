@@ -5,7 +5,6 @@ namespace SemPrace
 {
     public partial class LogInForm : Form
     {
-        string cs = @"URI=file:" + Application.StartupPath + "\\data_tb.db";
 
         SQLiteConnection con;
         SQLiteCommand cmd;
@@ -47,7 +46,7 @@ namespace SemPrace
             else
             {
                 string query = "SELECT * FROM users WHERE username= @name AND password= @pass";
-                con = new SQLiteConnection(cs);
+                con = new SQLiteConnection(SqLiteLibrary.cs);
                 con.Open();
                 cmd = new SQLiteCommand(query, con);
                 cmd.Parameters.AddWithValue("@name", usernameTB.Text);

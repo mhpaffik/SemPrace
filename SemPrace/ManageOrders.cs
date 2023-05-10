@@ -226,6 +226,13 @@ namespace SemPrace
                 }
             }
         }
+
+        private void btnViewOrders_Click(object sender, EventArgs e)
+        {
+            ViewOrders viewOrders = new ViewOrders();
+            viewOrders.MdiParent = this.MdiParent;
+            viewOrders.Show();
+        }
     }
 }
 

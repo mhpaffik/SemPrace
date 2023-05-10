@@ -410,6 +410,7 @@
             btnViewOrders.TabIndex = 67;
             btnViewOrders.Text = "View Orders";
             btnViewOrders.UseVisualStyleBackColor = true;
+            btnViewOrders.Click += btnViewOrders_Click;
             // 
             // btnClearOrders
             // 

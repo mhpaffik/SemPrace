@@ -56,5 +56,12 @@ namespace SemPrace
             manageCategories.MdiParent = this.MdiParent;
             manageCategories.Show();
         }
+
+        private void ordersLogo_Click(object sender, EventArgs e)
+        {
+            ManageOrders manageOrders = new ManageOrders();
+            manageOrders.MdiParent = this.MdiParent;
+            manageOrders.Show();
+        }
     }
 }
